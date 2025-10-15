@@ -5,7 +5,7 @@
   "packages": [
     {
       "name": "liquid_circle_floating_nav_bar",
-      "version": "2.0.6",
+      "version": "1.0.1",
       "dependencies": [
         "flutter",
         "meta",

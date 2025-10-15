@@ -25,10 +25,12 @@ dependencies:
 
 ```dart
 Scaffold(
-  bottomNvigationBar: CurvedNavigationBar(
+  bottomNvigationBar: LiquidCircleFloatingNavBar(
     backgroundColor: Colors.blueAccent,
-    radius: 8,
-    outerPadding: 12,
+    iconPadding: 15,
+    height: 80,
+    radius: 40,
+    outerPadding: 10,
     items: [
       CurvedNavigationBarItem(
         child: Icon(Icons.home_outlined),
@@ -61,11 +63,13 @@ Scaffold(
 
 ### Attributes
 
-#### CurvedNavigationBar
+#### LiquidCircleFloatingNavBar
 
 | Attribute               | Description                                                                                                                                                |
 |-------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `items`                 | List of CurvedNavigationBarItem                                                                                                                            |
+| `outerPadding`          | The floating space area                                                                                                                                    |
+| `raduis`                | The radius of the corners (if null it will be circular)                                                                                                    |
 | `index`                 | Index of NavigationBar, can be used to change current index or to set initial index                                                                        |
 | `color`                 | Color of NavigationBar, default Colors.white                                                                                                               |
 | `buttonBackgroundColor` | Background color of floating button, default same as color attribute                                                                                       |
@@ -91,12 +95,12 @@ Scaffold(
 ```dart
  // State class
   int _page = 0;
-  GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
+  GlobalKey<LiquidCircleFloatingNavBarState> _bottomNavigationKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: CurvedNavigationBar(
+        bottomNavigationBar: LiquidCircleFloatingNavBar(
           key: _bottomNavigationKey,
           items: [
             CurvedNavigationBarItem(
@@ -136,7 +140,7 @@ Scaffold(
                   child: Text('Go To Page of index 1'),
                   onPressed: () {
                     // Page change using state does the same as clicking index 1 navigation button
-                    final CurvedNavigationBarState? navBarState =
+                    final LiquidCircleFloatingNavBarState? navBarState =
                         _bottomNavigationKey.currentState;
                     navBarState?.setPage(1);
                   },

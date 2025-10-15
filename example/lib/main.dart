@@ -1,6 +1,6 @@
-import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
-import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
+import 'package:liquid_circle_floating_nav_bar/liquid_circle_floating_nav_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:liquid_circle_floating_nav_bar/curved_navigation_bar_item.dart';
 
 void main() => runApp(MaterialApp(home: BottomNavBar()));
 
@@ -11,14 +11,18 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int _page = 0;
-  GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
+  GlobalKey<LiquidCircleFloatingNavBarState> _bottomNavigationKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CurvedNavigationBar(
+      bottomNavigationBar: LiquidCircleFloatingNavBar(
         key: _bottomNavigationKey,
         index: 0,
+        iconPadding: 15,
+        height: 80,
+        radius: 40,
+        outerPadding: 10,
         items: [
           CurvedNavigationBarItem(
             child: Icon(Icons.home_outlined),
@@ -63,7 +67,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
               ElevatedButton(
                 child: Text('Go To Page of index 1'),
                 onPressed: () {
-                  final CurvedNavigationBarState? navBarState =
+                  final LiquidCircleFloatingNavBarState? navBarState =
                       _bottomNavigationKey.currentState;
                   navBarState?.setPage(1);
                 },

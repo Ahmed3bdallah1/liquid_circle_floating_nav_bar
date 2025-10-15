@@ -10,12 +10,10 @@ import 'src/nav_custom_painter.dart';
 
 typedef _LetIndexPage = bool Function(int value);
 
-class CurvedNavigationBar extends StatefulWidget {
+class LiquidCircleFloatingNavBar extends StatefulWidget {
   /// Defines the appearance of the [CurvedNavigationBarItem] list that are
   /// arrayed within the bottom navigation bar.
   final List<CurvedNavigationBarItem> items;
-
-  
 
   /// The index into [items] for the current active [CurvedNavigationBarItem].
   final int index;
@@ -26,13 +24,13 @@ class CurvedNavigationBar extends StatefulWidget {
   /// This is the circular radius for [CurvedNavigationBarItem].
   final double? radius;
 
-  /// The color of the [CurvedNavigationBar] itself, default Colors.white.
+  /// The color of the [LiquidCircleFloatingNavBar] itself, default Colors.white.
   final Color color;
 
   /// The background color of floating button, default same as [color] attribute.
   final Color? buttonBackgroundColor;
 
-  /// The color of [CurvedNavigationBar]'s background, default Colors.blueAccent.
+  /// The color of [LiquidCircleFloatingNavBar]'s background, default Colors.blueAccent.
   final Color backgroundColor;
 
   /// Called when one of the [items] is tapped.
@@ -49,19 +47,19 @@ class CurvedNavigationBar extends StatefulWidget {
   /// Duration of button change animation, default Duration(milliseconds: 600).
   final Duration animationDuration;
 
-  /// Height of [CurvedNavigationBar].
+  /// Height of [LiquidCircleFloatingNavBar].
   final double height;
 
-  /// Max width of [CurvedNavigationBar].
+  /// Max width of [LiquidCircleFloatingNavBar].
   final double? maxWidth;
 
   /// Padding of icon in floating button.
   final double iconPadding;
 
-  /// Check if [CurvedNavigationBar] has label.
+  /// Check if [LiquidCircleFloatingNavBar] has label.
   final bool hasLabel;
 
-  CurvedNavigationBar({
+  LiquidCircleFloatingNavBar({
     Key? key,
     required this.items,
     this.index = 0,
@@ -86,11 +84,10 @@ class CurvedNavigationBar extends StatefulWidget {
         super(key: key);
 
   @override
-  CurvedNavigationBarState createState() => CurvedNavigationBarState();
+  LiquidCircleFloatingNavBarState createState() => LiquidCircleFloatingNavBarState();
 }
 
-class CurvedNavigationBarState extends State<CurvedNavigationBar>
-    with SingleTickerProviderStateMixin {
+class LiquidCircleFloatingNavBarState extends State<LiquidCircleFloatingNavBar> with SingleTickerProviderStateMixin {
   late double _startingPos;
   late int _endingIndex;
   late double _pos;
@@ -123,7 +120,7 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
   }
 
   @override
-  void didUpdateWidget(CurvedNavigationBar oldWidget) {
+  void didUpdateWidget(LiquidCircleFloatingNavBar oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.index != widget.index) {
       final newPosition = widget.index / _length;

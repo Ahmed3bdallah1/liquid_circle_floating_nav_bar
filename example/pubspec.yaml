@@ -23,7 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  curved_labeled_navigation_bar:
+  liquid_circle_floating_nav_bar:
     path: ../
 
 

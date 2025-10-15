@@ -1,9 +1,9 @@
 import 'package:universal_io/io.dart';
 import 'dart:math';
 
-import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
-import 'package:curved_labeled_navigation_bar/src/nav_bar_item_widget.dart';
-import 'package:curved_labeled_navigation_bar/src/nav_custom_clipper.dart';
+import 'package:liquid_circle_floating_nav_bar/curved_navigation_bar_item.dart';
+import 'package:liquid_circle_floating_nav_bar/src/nav_bar_item_widget.dart';
+import 'package:liquid_circle_floating_nav_bar/src/nav_custom_clipper.dart';
 import 'package:flutter/material.dart';
 
 import 'src/nav_custom_painter.dart';
@@ -15,8 +15,16 @@ class CurvedNavigationBar extends StatefulWidget {
   /// arrayed within the bottom navigation bar.
   final List<CurvedNavigationBarItem> items;
 
+  
+
   /// The index into [items] for the current active [CurvedNavigationBarItem].
   final int index;
+
+  /// This is the outerPadding for [CurvedNavigationBarItem].
+  final double outerPadding;
+
+  /// This is the circular radius for [CurvedNavigationBarItem].
+  final double? radius;
 
   /// The color of the [CurvedNavigationBar] itself, default Colors.white.
   final Color color;
@@ -57,6 +65,8 @@ class CurvedNavigationBar extends StatefulWidget {
     Key? key,
     required this.items,
     this.index = 0,
+    this.outerPadding = 0,
+    this.radius,
     this.color = Colors.white,
     this.buttonBackgroundColor,
     this.backgroundColor = Colors.blueAccent,
@@ -67,8 +77,7 @@ class CurvedNavigationBar extends StatefulWidget {
     this.iconPadding = 12.0,
     this.maxWidth,
     double? height,
-  })
-      : letIndexChange = letIndexChange ?? ((_) => true),
+  })  : letIndexChange = letIndexChange ?? ((_) => true),
         assert(items.isNotEmpty),
         assert(0 <= index && index < items.length),
         assert(maxWidth == null || 0 <= maxWidth),
@@ -155,9 +164,7 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
               width: maxWidth,
               child: ClipRect(
                 clipper: NavCustomClipper(
-                  deviceHeight: MediaQuery
-                      .sizeOf(context)
-                      .height,
+                  deviceHeight: MediaQuery.sizeOf(context).height,
                 ),
                 child: Stack(
                   clipBehavior: Clip.none,
@@ -188,11 +195,12 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
                     ),
                     // Background
                     Positioned(
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
+                      left: widget.outerPadding,
+                      right: widget.outerPadding,
+                      bottom: widget.outerPadding,
                       child: ClipRRect(
-                          borderRadius: BorderRadius.circular(widget.height / 2),
+                          borderRadius: BorderRadius.circular(
+                              widget.radius ?? widget.height / 2),
                           child: CustomPaint(
                             painter: NavCustomPainter(
                               startingLoc: _pos,
@@ -202,9 +210,10 @@ class CurvedNavigationBarState extends State<CurvedNavigationBar>
                               hasLabel: widget.hasLabel,
                             ),
                             child: Container(
-                              height: widget.height, decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20)
-                            ),),
+                              height: widget.height,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(widget.radius ?? widget.height / 2)),
+                            ),
                           )),
                     ),
                     // Unselected buttons

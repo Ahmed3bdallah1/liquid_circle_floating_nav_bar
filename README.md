@@ -1,26 +1,34 @@
-# curved_labeled_navigation_bar
-[pub package](https://pub.dartlang.org/packages/curved_labeled_navigation_bar)
+# liquid_circle_floating_nav_bar
 
-A Flutter package for easy implementation of curved navigation bar.
-This package is a fork of the original curved_navigation_bar from https://github.com/rafalbednarczuk/curved_navigation_bar with label for CurvedNavigationBarItem.
+[//]: # ([pub package]&#40;https://pub.dartlang.org/packages/curved_labeled_navigation_bar&#41;)
 
-| Label                                                                                                                       | No Label                                                                                                                          |
-|-----------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
-| ![Gif](https://raw.githubusercontent.com/namanh11611/curved_labeled_navigation_bar/refs/heads/master/label.gif "Label Gif") | ![Gif](https://raw.githubusercontent.com/namanh11611/curved_labeled_navigation_bar/refs/heads/master/no_label.gif "No Label Gif") |
+[//]: # ()
+[//]: # (A Flutter package for easy implementation of curved navigation bar.)
+
+[//]: # (This package is a fork of the original curved_navigation_bar from https://github.com/rafalbednarczuk/curved_navigation_bar with label for CurvedNavigationBarItem.)
+
+[//]: # ()
+[//]: # (| Label                                                                                                                       | No Label                                                                                                                          |)
+
+[//]: # (|-----------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|)
+
+[//]: # (| ![Gif]&#40;https://raw.githubusercontent.com/namanh11611/curved_labeled_navigation_bar/refs/heads/master/label.gif "Label Gif"&#41; | ![Gif]&#40;https://raw.githubusercontent.com/namanh11611/curved_labeled_navigation_bar/refs/heads/master/no_label.gif "No Label Gif"&#41; |)
 
 ### Add dependency
 
 ```yaml
 dependencies:
-  curved_labeled_navigation_bar: ^2.0.6 #latest version
+  liquid_circle_floating_nav_bar: ^1.0.1 #latest version
 ```
 
 ### Easy to use
 
 ```dart
 Scaffold(
-  bottomNavigationBar: CurvedNavigationBar(
+  bottomNvigationBar: CurvedNavigationBar(
     backgroundColor: Colors.blueAccent,
+    radius: 8,
+    outerPadding: 12,
     items: [
       CurvedNavigationBarItem(
         child: Icon(Icons.home_outlined),

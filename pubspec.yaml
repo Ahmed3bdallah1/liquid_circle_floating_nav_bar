@@ -1,7 +1,7 @@
-name: curved_labeled_navigation_bar
+name: liquid_circle_floating_nav_bar
 description: Stunning Animating Curved Shape Navigation Bar. Adjustable color, background color, animation curve, animation duration.
 version: 2.0.6
-homepage: https://github.com/namanh11611/curved_labeled_navigation_bar
+homepage: https://github.com/Ahmed3bdallah1/liquid_circle_floating_nav_bar
 
 environment:
   sdk: '>=2.12.0 <4.0.0'

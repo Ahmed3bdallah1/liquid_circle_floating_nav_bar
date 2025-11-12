@@ -1,11 +1,10 @@
+import 'package:liquid_glass_renderer/experimental.dart';
 import 'package:universal_io/io.dart';
 import 'dart:math';
-
 import 'package:liquid_circle_floating_nav_bar/curved_navigation_bar_item.dart';
 import 'package:liquid_circle_floating_nav_bar/src/nav_bar_item_widget.dart';
 import 'package:liquid_circle_floating_nav_bar/src/nav_custom_clipper.dart';
 import 'package:flutter/material.dart';
-
 import 'src/nav_custom_painter.dart';
 
 typedef _LetIndexPage = bool Function(int value);
@@ -20,6 +19,10 @@ class LiquidCircleFloatingNavBar extends StatefulWidget {
 
   /// This is the outerPadding for [CurvedNavigationBarItem].
   final double outerPadding;
+
+  /// This is the enable for the glass effect for [CurvedNavigationBarItem].
+  /// This is Experimental not for usage yet.
+  final bool enableGlass;
 
   /// This is the circular radius for [CurvedNavigationBarItem].
   final double? radius;
@@ -64,6 +67,7 @@ class LiquidCircleFloatingNavBar extends StatefulWidget {
     required this.items,
     this.index = 0,
     this.outerPadding = 0,
+    this.enableGlass = false,
     this.radius,
     this.color = Colors.white,
     this.buttonBackgroundColor,
@@ -84,10 +88,12 @@ class LiquidCircleFloatingNavBar extends StatefulWidget {
         super(key: key);
 
   @override
-  LiquidCircleFloatingNavBarState createState() => LiquidCircleFloatingNavBarState();
+  LiquidCircleFloatingNavBarState createState() =>
+      LiquidCircleFloatingNavBarState();
 }
 
-class LiquidCircleFloatingNavBarState extends State<LiquidCircleFloatingNavBar> with SingleTickerProviderStateMixin {
+class LiquidCircleFloatingNavBarState extends State<LiquidCircleFloatingNavBar>
+    with SingleTickerProviderStateMixin {
   late double _startingPos;
   late int _endingIndex;
   late double _pos;
@@ -150,14 +156,12 @@ class LiquidCircleFloatingNavBarState extends State<LiquidCircleFloatingNavBar> 
       height: widget.height,
       child: LayoutBuilder(
         builder: (context, constraints) {
-          final maxWidth = min(
-              constraints.maxWidth, widget.maxWidth ?? constraints.maxWidth);
+          final maxWidth = min(constraints.maxWidth, widget.maxWidth ?? constraints.maxWidth);
           return Align(
             alignment: textDirection == TextDirection.ltr
                 ? Alignment.bottomLeft
                 : Alignment.bottomRight,
-            child: Container(
-              color: widget.backgroundColor,
+            child: SizedBox(
               width: maxWidth,
               child: ClipRect(
                 clipper: NavCustomClipper(
@@ -191,27 +195,61 @@ class LiquidCircleFloatingNavBarState extends State<LiquidCircleFloatingNavBar> 
                       ),
                     ),
                     // Background
+                    if (widget.enableGlass)
+                      Positioned(
+                        left: widget.outerPadding,
+                        right: widget.outerPadding,
+                        bottom: widget.outerPadding,
+                        child: Glassify(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(
+                                widget.radius ?? widget.height / 2),
+                            child: CustomPaint(
+                              painter: NavCustomPainter(
+                                startingLoc: _pos,
+                                itemsLength: _length,
+                                color: widget.color,
+                                textDirection: Directionality.of(context),
+                                hasLabel: widget.hasLabel,
+                              ),
+                              child: Container(
+                                height: widget.height,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                      widget.radius ?? widget.height / 2),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    // Background
                     Positioned(
                       left: widget.outerPadding,
                       right: widget.outerPadding,
                       bottom: widget.outerPadding,
                       child: ClipRRect(
-                          borderRadius: BorderRadius.circular(
-                              widget.radius ?? widget.height / 2),
-                          child: CustomPaint(
-                            painter: NavCustomPainter(
-                              startingLoc: _pos,
-                              itemsLength: _length,
-                              color: widget.color,
-                              textDirection: Directionality.of(context),
-                              hasLabel: widget.hasLabel,
+                        borderRadius: BorderRadius.circular(
+                            widget.radius ?? widget.height / 2),
+                        child: CustomPaint(
+                          painter: NavCustomPainter(
+                            startingLoc: _pos,
+                            itemsLength: _length,
+                            color: widget.enableGlass
+                                ? widget.color.withAlpha(200)
+                                : widget.color,
+                            textDirection: Directionality.of(context),
+                            hasLabel: widget.hasLabel,
+                          ),
+                          child: Container(
+                            height: widget.height,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(
+                                  widget.radius ?? widget.height / 2),
                             ),
-                            child: Container(
-                              height: widget.height,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(widget.radius ?? widget.height / 2)),
-                            ),
-                          )),
+                          ),
+                        ),
+                      ),
                     ),
                     // Unselected buttons
                     Positioned(

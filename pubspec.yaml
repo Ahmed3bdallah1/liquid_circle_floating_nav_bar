@@ -1,6 +1,6 @@
 name: liquid_circle_floating_nav_bar
 description: Stunning Animating Curved Shape Navigation Bar. Adjustable color, background color, animation curve, animation duration.
-version: 1.0.1
+version: 1.1.1
 homepage: https://github.com/Ahmed3bdallah1/liquid_circle_floating_nav_bar
 
 environment:
@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   meta: ^1.2.4
   universal_io: ^2.2.2
+  liquid_glass_renderer: ^0.1.1-dev.21
 
 dev_dependencies:
   flutter_test:

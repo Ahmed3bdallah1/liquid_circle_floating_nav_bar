@@ -5,9 +5,10 @@
   "packages": [
     {
       "name": "liquid_circle_floating_nav_bar",
-      "version": "1.0.1",
+      "version": "1.1.1",
       "dependencies": [
         "flutter",
+        "liquid_glass_renderer",
         "meta",
         "universal_io"
       ],
@@ -223,6 +224,48 @@
       "name": "vm_service",
       "version": "15.0.2",
       "dependencies": []
+    },
+    {
+      "name": "liquid_glass_renderer",
+      "version": "0.1.1-dev.26",
+      "dependencies": [
+        "equatable",
+        "flutter",
+        "flutter_shaders",
+        "logging",
+        "meta",
+        "motor"
+      ]
+    },
+    {
+      "name": "motor",
+      "version": "1.0.1",
+      "dependencies": [
+        "equatable",
+        "flutter",
+        "meta"
+      ]
+    },
+    {
+      "name": "logging",
+      "version": "1.3.0",
+      "dependencies": []
+    },
+    {
+      "name": "flutter_shaders",
+      "version": "0.1.3",
+      "dependencies": [
+        "flutter",
+        "vector_math"
+      ]
+    },
+    {
+      "name": "equatable",
+      "version": "2.0.7",
+      "dependencies": [
+        "collection",
+        "meta"
+      ]
     }
   ],
   "configVersion": 1

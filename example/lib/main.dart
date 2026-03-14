@@ -16,75 +16,54 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: Container(
-              color: Colors.blueAccent,
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(_page.toString(), textScaler: TextScaler.linear(10.0)),
-                    ElevatedButton(
-                      child: Text('Go To Page of index 1'),
-                      onPressed: () {
-                        final LiquidCircleFloatingNavBarState? navBarState =
-                            _bottomNavigationKey.currentState;
-                        navBarState?.setPage(1);
-                      },
-                    )
-                  ],
-                ),
-              ),
-            ),
+      extendBody: true,
+      body: Container(
+        color: Colors.blueAccent,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(_page.toString(),
+                  textScaler: TextScaler.linear(10.0)),
+              ElevatedButton(
+                child: Text('Go To Page of index 1'),
+                onPressed: () {
+                  final LiquidCircleFloatingNavBarState? navBarState =
+                      _bottomNavigationKey.currentState;
+                  navBarState?.setPage(1);
+                },
+              )
+            ],
           ),
-          Positioned(
-            bottom: MediaQuery.of(context).padding.bottom + 5,
-            left: 10,
-            right: 10,
-            child: LiquidCircleFloatingNavBar(
-              key: _bottomNavigationKey,
-              index: _page,
-              // iconPadding: 14,
-              // enableGlass: true,
-              // height: 80,
-              // radius: 40,
-              outerPadding: 10,
-              items: [
-                CurvedNavigationBarItem(
-                  child: Icon(Icons.home_outlined),
-                  label: 'Home',
-                ),
-                CurvedNavigationBarItem(
-                  child: Icon(Icons.search),
-                  label: 'Search',
-                ),
-                CurvedNavigationBarItem(
-                  child: Icon(Icons.chat_bubble_outline),
-                  label: 'Chat',
-                ),
-                CurvedNavigationBarItem(
-                  child: Icon(Icons.newspaper),
-                  label: 'Feed',
-                ),
-                CurvedNavigationBarItem(
-                  child: Icon(Icons.perm_identity),
-                  label: 'Personal',
-                ),
-              ],
-              color: Colors.white,
-              buttonBackgroundColor: Colors.white,
-              backgroundColor: Colors.blueAccent,
-              animationCurve: Curves.easeInOut,
-              animationDuration: Duration(milliseconds: 600),
-              onTap: (index) {
-                setState(() {
-                  _page = index;
-                });
-              },
-              letIndexChange: (index) => true,
-            ),
+        ),
+      ),
+      bottomNavigationBar: LiquidCircleFloatingNavBar(
+        key: _bottomNavigationKey,
+        index: 0,
+        iconPadding: 15,
+        height: 80,
+        radius: 40,
+        outerPadding: 10,
+        items: [
+          LiquidCurvedBarItem(
+            child: Icon(Icons.home_outlined),
+            label: 'Home',
+          ),
+          LiquidCurvedBarItem(
+            child: Icon(Icons.search),
+            label: 'Search',
+          ),
+          LiquidCurvedBarItem(
+            child: Icon(Icons.chat_bubble_outline),
+            label: 'Chat',
+          ),
+          LiquidCurvedBarItem(
+            child: Icon(Icons.newspaper),
+            label: 'Feed',
+          ),
+          LiquidCurvedBarItem(
+            child: Icon(Icons.perm_identity),
+            label: 'Personal',
           ),
         ],
       ),

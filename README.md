@@ -23,32 +23,35 @@ dependencies:
 
 ### Easy to use
 
+Use `extendBody: true` on the `Scaffold` so the body extends behind the floating nav bar and content can scroll under it.
+
 ```dart
 Scaffold(
-  bottomNvigationBar: LiquidCircleFloatingNavBar(
+  extendBody: true,
+  bottomNavigationBar: LiquidCircleFloatingNavBar(
     backgroundColor: Colors.blueAccent,
     iconPadding: 15,
     height: 80,
     radius: 40,
     outerPadding: 10,
     items: [
-      CurvedNavigationBarItem(
+      LiquidCurvedBarItem(
         child: Icon(Icons.home_outlined),
         label: 'Home',
       ),
-      CurvedNavigationBarItem(
+      LiquidCurvedBarItem(
         child: Icon(Icons.search),
         label: 'Search',
       ),
-      CurvedNavigationBarItem(
+      LiquidCurvedBarItem(
         child: Icon(Icons.chat_bubble_outline),
         label: 'Chat',
       ),
-      CurvedNavigationBarItem(
+      LiquidCurvedBarItem(
         child: Icon(Icons.newspaper),
         label: 'Feed',
       ),
-      CurvedNavigationBarItem(
+      LiquidCurvedBarItem(
         child: Icon(Icons.perm_identity),
         label: 'Personal',
       ),
@@ -67,9 +70,9 @@ Scaffold(
 
 | Attribute               | Description                                                                                                                                                |
 |-------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `items`                 | List of CurvedNavigationBarItem                                                                                                                            |
+| `items`                 | List of LiquidCurvedBarItem                                                                                                                                |
 | `outerPadding`          | The floating space area                                                                                                                                    |
-| `raduis`                | The radius of the corners (if null it will be circular)                                                                                                    |
+| `radius`                | The radius of the corners (if null it will be circular)                                                                                                    |
 | `index`                 | Index of NavigationBar, can be used to change current index or to set initial index                                                                        |
 | `color`                 | Color of NavigationBar, default Colors.white                                                                                                               |
 | `buttonBackgroundColor` | Background color of floating button, default same as color attribute                                                                                       |
@@ -82,13 +85,13 @@ Scaffold(
 | `maxWidth`              | Allows to set the width of the navigation bar lower than the entire screen width by default                                                                |
 | `iconPadding`           | Padding of icon in floating button                                                                                                                         |
 
-#### CurvedNavigationBarItem
+#### LiquidCurvedBarItem
 
-| Attribute    | Description                     |
-|--------------|---------------------------------|
-| `child`      | Icon of CurvedNavigationBarItem |
-| `label`      | Text of CurvedNavigationBarItem |
-| `labelStyle` | TextStyle for label             |
+| Attribute    | Description                      |
+|--------------|----------------------------------|
+| `child`      | Icon of LiquidCurvedBarItem      |
+| `label`      | Text of LiquidCurvedBarItem      |
+| `labelStyle` | TextStyle for label              |
 
 ### Change page programmatically
 
@@ -100,26 +103,27 @@ Scaffold(
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        extendBody: true,
         bottomNavigationBar: LiquidCircleFloatingNavBar(
           key: _bottomNavigationKey,
           items: [
-            CurvedNavigationBarItem(
+            LiquidCurvedBarItem(
               child: Icon(Icons.home_outlined),
               label: 'Home',
             ),
-            CurvedNavigationBarItem(
+            LiquidCurvedBarItem(
               child: Icon(Icons.search),
               label: 'Search',
             ),
-            CurvedNavigationBarItem(
+            LiquidCurvedBarItem(
               child: Icon(Icons.chat_bubble_outline),
               label: 'Chat',
             ),
-            CurvedNavigationBarItem(
+            LiquidCurvedBarItem(
               child: Icon(Icons.newspaper),
               label: 'Feed',
             ),
-            CurvedNavigationBarItem(
+            LiquidCurvedBarItem(
               child: Icon(Icons.perm_identity),
               label: 'Personal',
             ),

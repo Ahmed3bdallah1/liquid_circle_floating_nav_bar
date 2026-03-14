@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class CurvedNavigationBarItem {
-  /// Icon of [CurvedNavigationBarItem].
+class LiquidCurvedBarItem {
+  /// Icon of [LiquidCurvedBarItem].
   final Widget child;
 
-  /// Text of [CurvedNavigationBarItem].
+  /// Text of [LiquidCurvedBarItem].
   final String? label;
 
   /// TextStyle for [label].
   final TextStyle? labelStyle;
 
-  const CurvedNavigationBarItem({
+  const LiquidCurvedBarItem({
     required this.child,
     this.label,
     this.labelStyle,

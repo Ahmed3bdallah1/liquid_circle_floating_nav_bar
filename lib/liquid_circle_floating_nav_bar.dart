@@ -1,4 +1,11 @@
+<<<<<<< Updated upstream
 import 'package:liquid_glass_renderer/experimental.dart';
+=======
+import 'dart:ui';
+
+import 'package:liquid_glass_renderer/experimental.dart';
+import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
+>>>>>>> Stashed changes
 import 'package:universal_io/io.dart';
 import 'dart:math';
 import 'package:liquid_circle_floating_nav_bar/curved_navigation_bar_item.dart';
@@ -10,21 +17,29 @@ import 'src/nav_custom_painter.dart';
 typedef _LetIndexPage = bool Function(int value);
 
 class LiquidCircleFloatingNavBar extends StatefulWidget {
-  /// Defines the appearance of the [CurvedNavigationBarItem] list that are
+  /// Defines the appearance of the [LiquidCurvedBarItem] list that are
   /// arrayed within the bottom navigation bar.
-  final List<CurvedNavigationBarItem> items;
+  final List<LiquidCurvedBarItem> items;
 
-  /// The index into [items] for the current active [CurvedNavigationBarItem].
+  /// The index into [items] for the current active [LiquidCurvedBarItem].
   final int index;
 
-  /// This is the outerPadding for [CurvedNavigationBarItem].
+  /// This is the outerPadding for [LiquidCurvedBarItem].
   final double outerPadding;
 
+<<<<<<< Updated upstream
   /// This is the enable for the glass effect for [CurvedNavigationBarItem].
   /// This is Experimental not for usage yet.
   final bool enableGlass;
 
   /// This is the circular radius for [CurvedNavigationBarItem].
+=======
+  /// This is the enable for the glass effect for [LiquidCurvedBarItem].
+  /// This is Experimental not for usage yet.
+  final bool enableGlass;
+
+  /// This is the circular radius for [LiquidCurvedBarItem].
+>>>>>>> Stashed changes
   final double? radius;
 
   /// The color of the [LiquidCircleFloatingNavBar] itself, default Colors.white.
@@ -265,9 +280,9 @@ class LiquidCircleFloatingNavBarState extends State<LiquidCircleFloatingNavBar>
                               position: _pos,
                               length: _length,
                               index: widget.items.indexOf(item),
-                              child: Center(child: item.child),
                               label: item.label,
                               labelStyle: item.labelStyle,
+                              child: Center(child: item.child),
                             );
                           }).toList(),
                         ),
